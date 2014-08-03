@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "browserify": "^5.9.1",
+    "gulp": "^3.8.6",
+    "gulp-concat": "^2.3.4",
+    "gulp-uglify": "^0.3.1",
+    "gulp-util": "^3.0.0",
+    "vinyl-buffer": "0.0.0",
+    "vinyl-source-stream": "^0.1.1",
+    "watchify": "^1.0.1",
+    "gulp-autoprefixer": "0.0.6"
+  }
+}

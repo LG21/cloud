@@ -1,0 +1,12 @@
+.tag {
+  cursor:pointer;
+  display:inline;
+}
+  .tag:hover { text-decoration:underline; }
+.negative {
+  color:red
+}
+
+.positive {
+  color: green;
+}
