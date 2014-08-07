@@ -15,7 +15,7 @@ var
 gulp.task('buildLibs', function() {
   gulp.src(['./assets/js/vendors/*.js'])
     .pipe(concat('libs.min.js'))
-    //.pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest(destFolder));
 });
 
@@ -28,8 +28,8 @@ gulp.task('buildApp', function(){
     //Pass desired output filename to vinyl-source-stream
     .pipe(source(destFile))
     // Start piping stream to tasks!
-    //.pipe(buffer())
-    //.pipe(uglify())
+    .pipe(buffer())
+    .pipe(uglify())
     .pipe(gulp.dest(destFolder));
 });
 
@@ -60,8 +60,8 @@ gulp.task('buildTests', function(){
     //Pass desired output filename to vinyl-source-stream
     .pipe(source(destFile))
     // Start piping stream to tasks!
-    //.pipe(buffer())
-    //.pipe(uglify())
+    .pipe(buffer())
+    .pipe(uglify())
     .pipe(gulp.dest(testDestFolder));
 });
 
