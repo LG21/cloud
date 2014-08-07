@@ -1,4 +1,4 @@
-###Install and Run
+###Install and run
 
 To run this project on your local machine you only need pull down the repository:
 
@@ -14,7 +14,7 @@ in root directory of this  project and start the gulp watcher using:
 
 	gulp
 
-Test can be run using:
+Tests can be run using:
 
 	npm test
 
