@@ -1,6 +1,6 @@
 
 var TopicView = Backbone.View.extend({
-  template: Handlebars.compile( $("#TopicTmpl").html() ),
+  template: Handlebars.compile( $("#TopicTmpl").html() || "" ),
   initialize:function(){
     this.render();
     this.delegateEvents();

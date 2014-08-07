@@ -3,7 +3,6 @@ var TopicView = require('../views/Topic');
 var TopicsView = Backbone.View.extend({
   initialize:function(options){
     this.childView = TopicView;
-
     this.render();
   },
   render:function(){
@@ -14,15 +13,15 @@ var TopicsView = Backbone.View.extend({
       var childView = new TopicView({
         model:model 
       });
+
+      if ( childView && childView.el ){
+        container.appendChild( childView.el  );
+      } 
       
-      container.appendChild( childView.el  );
     });
     
     _this.$el.html( container );
     
-  },
-  clickHandler:function(){
-    alert("dasdas");
   }
 });
 

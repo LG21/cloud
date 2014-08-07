@@ -1,5 +1,5 @@
 var DetailsView = Backbone.View.extend({
-  template: Handlebars.compile( $("#DetailsTmpl").html() ),
+  template: Handlebars.compile( $("#DetailsTmpl").html() || "" ),
   initialize:function(){
     this.render();
   },

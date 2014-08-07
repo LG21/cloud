@@ -12,18 +12,21 @@ var Topic = Backbone.Model.extend({
     "sentimentScore": 0
   },
   initialize:function(options){
-    var level, levels, newLevel, founded = false,
-        volume = options.volume,
-        sentimentScore = options.sentimentScore,
-        sentiment;
+    var level, levels = 0, newLevel, founded = false,
+        volume, sentiment, sentimentScore;
+      
+    if ( options ){
+      volume = options.volume
+      sentimentScore = options.sentimentScore
+    }
 
-    levels = this.collection.levels;
-
+    if ( this.collection && this.collection.levels ){
+      levels = this.collection.levels;
+    }
+    
     for ( level in levels ){
       if (levels.hasOwnProperty(level)){
-
         //console.log( volume, levels[level] );
-
         if ( volume > levels[level]){
           if (!founded ){
             newLevel = level;
@@ -43,11 +46,11 @@ var Topic = Backbone.Model.extend({
       }
     }
 
-    if ( _.size(options.sentiment) < 3 ){
-
+    if ( options && _.size(options.sentiment) < 3 ){
+      
       for ( sentiment in this.defaults.sentiment ){
 
-        if ( !options.sentiment.hasOwnProperty( sentiment )){
+        if ( options.sentiment && !options.sentiment.hasOwnProperty( sentiment )){
           options.sentiment[sentiment] = this.defaults.sentiment[sentiment];
         }
 

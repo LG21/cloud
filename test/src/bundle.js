@@ -1,17 +1,16 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-/**
-  The app starts here. All compontents are required and instantiated.
-*/
+var Topics = require( '../../assets/js/app/collections/Topics' ),
+    Details = require( '../../assets/js/app/components/Details' ),
+    TopicsCloud = require( '../../assets/js/app/components/TopicsCloud' ),
+    Topic = require( '../../assets/js/app/models/Topic' );
 
-var TopicsCloud = require('./components/TopicsCloud'),
-    Details = require('./components/Details');
+  window.srcNamespace = {};
+  srcNamespace['Topic'] = Topic;
+  srcNamespace['Topics'] = Topics;
+  srcNamespace['TopicsCloud'] = TopicsCloud;
+  srcNamespace['Details'] = Details;
 
-CloudApp.components = {
-  topicsCloud: new TopicsCloud( $("#Cloud") ),
-  details: new Details( $("#Details") )
-};
-
-},{"./components/Details":3,"./components/TopicsCloud":4}],2:[function(require,module,exports){
+},{"../../assets/js/app/collections/Topics":2,"../../assets/js/app/components/Details":3,"../../assets/js/app/components/TopicsCloud":4,"../../assets/js/app/models/Topic":5}],2:[function(require,module,exports){
 var Topic = require('../models/Topic'),
     Topics;
 

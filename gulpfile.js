@@ -8,12 +8,14 @@ var
   buffer = require('vinyl-buffer'),
   sourceFile = './assets/js/app/app.js',
   destFolder = './assets/js/build',
-  destFile = 'bundle.js';
+  destFile = 'bundle.js',
+  testsSourceFile = './test/src/testSrc.js',
+  testDestFolder = './test/src/';
 
 gulp.task('buildLibs', function() {
   gulp.src(['./assets/js/vendors/*.js'])
     .pipe(concat('libs.min.js'))
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(gulp.dest(destFolder));
 });
 
@@ -45,9 +47,22 @@ gulp.task('watchApp', function() {
 });
 
 gulp.task('watchApp', function() {
-  gulp.watch('./assets/js/app/*.js', ['buildApp']);
-  gulp.watch('./assets/js/app/*/*.js', ['buildApp']);
-  gulp.watch('./assets/js/app/templates/*.hbs', ['renderTemplates']);
+  gulp.watch('./assets/js/app/*.js', ['buildApp', 'buildTests']);
+  gulp.watch('./assets/js/app/*/*.js', ['buildApp', 'buildTests']);
 });
 
-gulp.task('default', ['buildLibs','buildApp', 'watchApp']);
+gulp.task('buildTests', function(){
+  console.log("Build Tests");
+  return browserify({
+    entries: [testsSourceFile]
+  })
+    .bundle()
+    //Pass desired output filename to vinyl-source-stream
+    .pipe(source(destFile))
+    // Start piping stream to tasks!
+    //.pipe(buffer())
+    //.pipe(uglify())
+    .pipe(gulp.dest(testDestFolder));
+});
+
+gulp.task('default', ['buildLibs','buildApp', 'watchApp', 'buildTests']);

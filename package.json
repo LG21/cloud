@@ -1,4 +1,7 @@
 {
+  "scripts" : { 
+    "test" : "./node_modules/karma/bin/karma start"
+  }, 
   "devDependencies": {
     "browserify": "^5.9.1",
     "gulp": "^3.8.6",
@@ -8,6 +11,8 @@
     "vinyl-buffer": "0.0.0",
     "vinyl-source-stream": "^0.1.1",
     "watchify": "^1.0.1",
-    "gulp-autoprefixer": "0.0.6"
+    "gulp-autoprefixer": "0.0.6",
+    "karma": "^0.12.19",
+    "karma-chrome-launcher": "^0.1.4"
   }
 }

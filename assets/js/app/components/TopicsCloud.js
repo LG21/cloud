@@ -16,6 +16,10 @@ function TopicsCloud(domEl){
   this.init();
 }
 
+/*
+  initializes members of TopicsCloud, adds the component to the Dom 
+  and sets event handler, whisch is going to listen to the changes triggered by Details component.
+*/
 
 TopicsCloud.prototype.init = function(){
   this.collection = new Topics();
@@ -25,14 +29,24 @@ TopicsCloud.prototype.init = function(){
   });
 
   this.addCompontentToDom();
-  Backbone.on("details::initialized", this.setDefaultDetails.bind(this));
+  Backbone.on("details::initialized", this.changeTopic.bind(this));
 };
+
+/*
+  if the DOM element for the component is defined, show add components view to the DOM
+*/
 
 TopicsCloud.prototype.addCompontentToDom = function(){
-  this.domEl.html( this.View.el );
+  if ( this.domEl ){
+    this.domEl.html( this.View.el );
+  } 
 };
 
-TopicsCloud.prototype.setDefaultDetails = function(){
+/*
+  notifies about clicking on one of the topics in cloud. It sends a Backbone model of clicked element as argument.
+*/
+
+TopicsCloud.prototype.changeTopic = function(){
   Backbone.trigger("topic::changed", this.collection.models[0]);
 };
 
